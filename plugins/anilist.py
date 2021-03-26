@@ -17,7 +17,12 @@ from aiohttp import ClientSession
 from userge import Message, get_collection, userge
 from userge.utils import media_to_image
 from userge.utils import post_to_telegraph as post_to_tp
-
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    User,
+)
 # Logging Errors
 CLOG = userge.getCLogger(__name__)
 
