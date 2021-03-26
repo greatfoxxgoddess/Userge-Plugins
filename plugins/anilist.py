@@ -17,12 +17,7 @@ from aiohttp import ClientSession
 from userge import Message, get_collection, userge
 from userge.utils import media_to_image
 from userge.utils import post_to_telegraph as post_to_tp
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    User,
-)
+
 # Logging Errors
 CLOG = userge.getCLogger(__name__)
 
@@ -39,18 +34,16 @@ ANIME_TEMPLATE = """{name}
 {status_air}
 ➤ **SCORE:** `{score}%` 🌟
 ➤ **ADULT RATED:** `{adult}`
-btns = [
-                [InlineKeyboardButton("Trailer", url=f"trailer_link"),
-                    InlineKeyboardButton("Synopsis & More", url=synopsis_link),
-                ]
-            ]
+🎬 {trailer_link}
+📖 [Synopsis & More]({synopsis_link})
+
 {additional}"""
 
 SAVED = get_collection("TEMPLATES")
 
 # GraphQL Queries.
 ANIME_QUERY = """
-query ($id: Int, $idMaSynopsis & Morel:Int, $search: String, $type: MediaType, $asHtml: Boolean) {
+query ($id: Int, $idMal:Int, $search: String, $type: MediaType, $asHtml: Boolean) {
     Media (id: $id, idMal: $idMal, search: $search, type: $type) {
         id
         idMal
