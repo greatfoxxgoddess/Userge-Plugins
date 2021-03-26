@@ -40,8 +40,8 @@ ANIME_TEMPLATE = """{name}
 ➤ **SCORE:** `{score}%` 🌟
 ➤ **ADULT RATED:** `{adult}`
 btns = [
-                [InlineKeyboardButton("Trailer", url=f"{trailer_link}"),
-                    InlineKeyboardButton("Synopsis & More", url={synopsis_link}),
+                [InlineKeyboardButton("Trailer", url=f"trailer_link"),
+                    InlineKeyboardButton("Synopsis & More", url=synopsis_link),
                 ]
             ]
 {additional}"""
