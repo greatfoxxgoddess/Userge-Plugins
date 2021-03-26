@@ -34,16 +34,18 @@ ANIME_TEMPLATE = """{name}
 {status_air}
 ➤ **SCORE:** `{score}%` 🌟
 ➤ **ADULT RATED:** `{adult}`
-🎬 {trailer_link}
-📖 [Synopsis & More]({synopsis_link})
-
+btns = [
+                [InlineKeyboardButton("Trailer", url=f"{trailer_link}"),
+                    InlineKeyboardButton("Synopsis & More", url={synopsis_link}),
+                ]
+            ]
 {additional}"""
 
 SAVED = get_collection("TEMPLATES")
 
 # GraphQL Queries.
 ANIME_QUERY = """
-query ($id: Int, $idMal:Int, $search: String, $type: MediaType, $asHtml: Boolean) {
+query ($id: Int, $idMaSynopsis & Morel:Int, $search: String, $type: MediaType, $asHtml: Boolean) {
     Media (id: $id, idMal: $idMal, search: $search, type: $type) {
         id
         idMal
