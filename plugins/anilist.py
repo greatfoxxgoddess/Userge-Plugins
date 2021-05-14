@@ -789,8 +789,8 @@ def get_btns(result: list, lsqry):
     btn = []
     btn.append(InlineKeyboardButton(text="Description", callback_data=f"desc_{result[6]}{qry}"))
     if result[4]==False:
-        btn.append(InlineKeyboardButton(text="Download", switch_inline_query_current_chat=f"anime {result[5]}"))
     btn.append(InlineKeyboardButton(text="List Series", callback_data=f"ls_{result[6]}{qry}"))
+    btn.append([InlineKeyboardButton(text="Download", switch_inline_query_current_chat=f"anime {result[5]}")])
     buttons.append(btn)
     return buttons
 
