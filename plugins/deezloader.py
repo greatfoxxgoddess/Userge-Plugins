@@ -12,8 +12,9 @@ Clogger = userge.getCLogger(__name__)
 ARL_TOKEN = os.environ.get("ARL_TOKEN")
 TEMP_PATH = "deezdown_temp/"
 REX = re.compile(
-    r"https?:\/\/(open\.spotify|www\.deezer)\.com\/"
-    r"(track|album|playlist)\/[A-Z0-9a-z]{3,}"
+    r"https?:\/\/(open/.spotify|www/.deezer|deezer)\.com\/"
+    r"https?:\/\/(deezer\.page)\.link\/”
+    r"(track|album|play|track)\/[A-Z0-9a-z]{3,}"
 )
 ARL_HELP = """**Oops, Time to Help Yourself**
 [Here Help Yourself](https://www.google.com/search?q=how+to+get+deezer+arl+token)
@@ -78,7 +79,7 @@ async def deezload(message: Message):
                 return
         if not REX.search(input_link):
             await message.edit(
-                "As per my Blek Mejik Regex, this link is not supported."
+                ">.< this link is not supported."
             )
             return
     else:
@@ -262,6 +263,6 @@ async def batch_dl(link, qual, msg, client, dir_, allow_zip):
                     not_interface=True,
                     zips=False,
                 )
-                await msg.edit("Uploading Tracks 📤", del_in=5)
+                await msg.edit("Uploading Tracks", del_in=5)
                 for track in album_list:
                     await audio_upload(msg, Path(track), True)
